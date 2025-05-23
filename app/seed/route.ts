@@ -1,3 +1,5 @@
+// this file script has been executed in the browser and can be deleted
+
 import bcrypt from 'bcryptjs';
 import postgres from 'postgres';
 import { invoices, customers, revenue, users } from '../lib/placeholder-data';
