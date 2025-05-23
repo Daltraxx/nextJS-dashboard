@@ -1,4 +1,4 @@
-'use client'; // required due to usePathname() hook
+'use client'; // required due to usePathname() React hook
 
 import {
   UserGroupIcon,
