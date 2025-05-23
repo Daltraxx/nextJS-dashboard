@@ -1,3 +1,6 @@
+/* Use this file to add css rules to all the routes in the app, such as CSS reset rules, site-wide styles for HTML elements like links, and more*/
+/* You can import global.css in any component in your application, but it's usually good practice to add it to your top-level component (the root layout) */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
