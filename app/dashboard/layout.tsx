@@ -1,4 +1,4 @@
-import SideNav from '@/app/ui/dashboard/sidenav';
+import SideNav from '@/app/ui/dashboard/sidenav'; // Any components imported and used in this file will be part of the layout
  
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

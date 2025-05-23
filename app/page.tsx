@@ -1,10 +1,10 @@
 import AcmeLogo from '@/app/ui/acme-logo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from 'next/link'; 
+import Image from 'next/image'; // import the <Image> Component for optimized images
 
-import styles from '@/app/ui/home.module.css';
-import { lusitana } from './ui/fonts';
+import styles from '@/app/ui/home.module.css'; // import styles from CSS Module
+import { lusitana } from './ui/fonts'; // import lusitana font from fonts.ts and use for p element
 
 export default function Page() {
   return (
@@ -31,7 +31,13 @@ export default function Page() {
         </div>
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
           {/* Add Hero Images Here */}
-          <Image src="/hero-desktop.png" width={1000} height={760} className="hidden md:block" alt="Screenshots of the dashboard project showing desktop version" />
+          <Image
+            src="/hero-desktop.png" // source is located in public folder
+            width={1000} // width and height are set to avoid layout shift, and should be an aspect ratio identical to the source image
+            height={760} // note that height and width are not the size the image is rendered, but the size of the actual image file used to understand the aspect ratio
+            className="hidden md:block" // hidden for small devices and shown for medium ones
+            alt="Screenshots of the dashboard project showing desktop version"
+          />
           <Image src="/hero-mobile.png" width={560} height={620} className="block md:hidden" alt="Screenshot of the dashboard project showing mobile version" />
         </div>
       </div>

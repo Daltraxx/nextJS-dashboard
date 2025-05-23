@@ -1,5 +1,8 @@
+// This file is used for the root layout and is required in every Next.js application
+// Any UI you add to the root layout will be shared across all pages in your application. You can use the root layout to modify your <html> and <body> tags, and add metadata
+
 import '@/app/ui/global.css';
-import { inter } from '@/app/ui/fonts';
+import { inter } from '@/app/ui/fonts'; // inter is imported from fonts.ts and used as the main body font. antialiased is a tailwind class to smooth out the font (not strictly necessary)
 
 export default function RootLayout({ children }: { children: React.ReactNode;}) {
   return (
