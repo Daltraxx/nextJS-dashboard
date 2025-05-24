@@ -14,14 +14,17 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const { replace } = useRouter();
 
   const handleSearch = useDebouncedCallback((term: string) => {
-    console.log(`Searching... ${term}`)
+    console.log(`Searching... ${term}`); // used to illustrate debouncing
     const params = new URLSearchParams(searchParams.toString()); // URLSearchParams is a Web API that provides utility methods for manipulating the URL query parameters
+
     // set the params string based on the user’s input. If the input is empty, you want to delete it
     if (term) {
       params.set('query', term);
     } else {
       params.delete('query');
     }
+    
+    params.set('page', '1'); // when user types a new search query, we want to reset the page number to 1
 
     replace(`${pathname}?${params.toString()}`);
   }, 300);
