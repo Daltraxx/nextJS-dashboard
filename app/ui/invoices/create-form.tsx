@@ -11,7 +11,7 @@ import { createInvoice } from '@/app/lib/actions';
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   return (
-    <form action={createInvoice}> {/*in React, the action attribute is considered a special prop. Behind the scenes, Server Actions create a POST API endpoint.*/}
+    <form action={createInvoice}> {/*in React, the action attribute is considered a special prop. Behind the scenes, Server Actions create a POST API endpoint. The action will automatically receive the native FormData object, containing the captured data*/}
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">

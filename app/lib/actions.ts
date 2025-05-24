@@ -3,4 +3,23 @@
 // Any functions included in this file that are not used will be automatically removed from the final application bundle.
 'use server';
 
-export async function createInvoice(formData: FormData) {}
+import { z } from 'zod';
+
+const FormSchema = z.object({
+   id: z.string(),
+   customerId: z.string(),
+   amount: z.coerce.number(),
+   status: z.enum(['pending', 'paid']),
+   date: z.string()
+});
+
+export async function createInvoice(formData: FormData) {
+   const rawFormData = {
+      // Tip: If you're working with forms that have many fields, you may want to consider using the entries() method with JavaScript's Object.fromEntries()
+      customerId: formData.get('customerId'),
+      amount: formData.get('amount'),
+      status: formData.get('status')
+   };
+   // console.log(rawFormData);
+}
+
