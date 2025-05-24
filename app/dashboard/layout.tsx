@@ -1,4 +1,6 @@
 import SideNav from '@/app/ui/dashboard/sidenav'; // Any components imported and used in this file will be part of the layout
+
+export const experimental_ppr = true; // adds the experimental_ppr segment config option to dashboard layout
  
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
