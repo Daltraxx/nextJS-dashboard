@@ -10,17 +10,33 @@ import postgres from 'postgres';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
+// enforce schema when adding data to db and provide messages when form submission does not satisfy requirements
 const FormSchema = z.object({
-   id: z.string(), // created on database
-   customerId: z.string(),
-   amount: z.coerce.number(),
-   status: z.enum(['pending', 'paid']),
+   id: z.string(),
+   customerId: z.string({
+      invalid_type_error: 'Please select a customer.'
+   }),
+   amount: z.coerce
+      .number()
+      .gt(0, { message: 'Please enter an amount greater than $0.'}), // .gt() method in Zod is used to specify that a number must be greater than a given value
+   status: z.enum(['pending', 'paid'], {
+      invalid_type_error: 'Please select an invoice status.'
+   }),
    date: z.string()
 });
 
-const CreateInvoice = FormSchema.omit({ id: true, date: true });
+export type State = {
+   errors?: {
+      customerId?: string[];
+      amount?: string[];
+      status?: string[];
+   };
+   message?: string | null;
+}
 
-export async function createInvoice(formData: FormData) {
+const CreateInvoice = FormSchema.omit({ id: true, date: true }); // id created in database and date created in createInvoice
+
+export async function createInvoice(prevState: State, formData: FormData) {
    const rawFormData = {
       // Tip: If you're working with forms that have many fields, you may want to consider using the entries() method with JavaScript's Object.fromEntries()
       customerId: formData.get('customerId'),
