@@ -48,6 +48,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
    // console.log(rawFormData);
 
    const validatedFields = CreateInvoice.safeParse(rawFormData);
+   // safeParse() will return an object containing either a success or error field. This will help handle validation more gracefully without having put this logic inside the try/catch block.
 
    // If form validation fails, return errors early. Otherwise, continue.
    if (!validatedFields.success) {
