@@ -41,7 +41,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           </div>
           <div id="customer-error" aria-live="polite" aria-atomic="true"> 
             {/* aria-live="polite": The screen reader should politely notify the user when the error inside the div is updated. */}
-            {/* Display error if user doesn't choose a customer*/}
+            {/* Display error if user doesn't choose a customer */}
             {state.errors?.customerId && state.errors.customerId.map((error: string) => (
               <p className="mt-2 text-sm text-red-500" key={error}>{error}</p>
             ))}
@@ -68,7 +68,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
             </div>
           </div>
           <div id="amount-error" aria-live="polite" aria-atomic="true">
-            {/* Display error if user doesn't choose amount greater than 0*/}
+            {/* Display error if user doesn't choose amount greater than 0 */}
             {state.errors?.amount && state.errors.amount.map((error: string) => (
               <p className="mt-2 text-sm text-red-500" key={error}>{error}</p>
             ))}
@@ -117,16 +117,16 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
             </div>
           </div>
           <div id="status-error" aria-live="polite" aria-atomic="true">
-            {/* Display error if user doesn't choose a status*/}
+            {/* Display error if user doesn't choose a status */}
             {state.errors?.status && state.errors.status.map((error: string) => (
               <p className="mt-2 text-sm text-red-500" key={error}>{error}</p>
             ))}
           </div>
         </fieldset>
         <div id="form-error" aria-live="polite" aria-atomic="true">
-            {/* Display error if user doesn't choose a customer*/}
-            {state.message && <p className="mt-2 text-sm text-red-500" key={state.message}>{state.message}</p>}
-          </div>
+          {/* Display error if any fields not filled correctly */}
+          {state.message && <p className="mt-2 text-sm text-red-500" key={state.message}>{state.message}</p>}
+        </div>
       </div>
       <div className="mt-6 flex justify-end gap-4">
         <Link

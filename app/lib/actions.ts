@@ -92,7 +92,7 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
       status: formData.get('status')
    };
 
-   const validatedFields = FormSchema.safeParse(rawFormData);
+   const validatedFields = UpdateInvoice.safeParse(rawFormData);
 
    if (!validatedFields.success) {
       return {
