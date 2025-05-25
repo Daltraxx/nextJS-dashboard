@@ -4,6 +4,8 @@
 'use server';
 
 import { z } from 'zod';
+import { revalidatePath } from 'next/cache'; // used to clear cache and trigger a new request to the server
+import { redirect } from 'next/navigation';
 import postgres from 'postgres';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
@@ -37,5 +39,7 @@ export async function createInvoice(formData: FormData) {
       VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
    `;
    
+   revalidatePath('/dashboard/invoices'); // Once the database has been updated, the /dashboard/invoices path will be revalidated, and fresh data will be fetched from the server.
+   redirect('/dashboard/invoices'); // redirect the user back to the /dashboard/invoices page
 }
 
