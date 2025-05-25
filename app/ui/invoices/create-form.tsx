@@ -11,10 +11,9 @@ import { useActionState } from 'react';
 export default function Form({ customers }: { customers: CustomerField[] }) {
   const initialState: State = { message: null, errors: {} };
   const [state, formAction] = useActionState(createInvoice, initialState);
-  console.log(state)
 
   return (
-    <form action={formAction}> {/*in React, the action attribute is considered a special prop. Behind the scenes, Server Actions create a POST API endpoint. The action will automatically receive the native FormData object, containing the captured data*/}
+    <form action={formAction} aria-describedby="form-error"> {/*in React, the action attribute is considered a special prop. Behind the scenes, Server Actions create a POST API endpoint. The action will automatically receive the native FormData object, containing the captured data*/}
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
@@ -118,12 +117,16 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
             </div>
           </div>
           <div id="status-error" aria-live="polite" aria-atomic="true">
-            {/* Display error if user doesn't choose a customer*/}
+            {/* Display error if user doesn't choose a status*/}
             {state.errors?.status && state.errors.status.map((error: string) => (
               <p className="mt-2 text-sm text-red-500" key={error}>{error}</p>
             ))}
           </div>
         </fieldset>
+        <div id="form-error" aria-live="polite" aria-atomic="true">
+            {/* Display error if user doesn't choose a customer*/}
+            {state.message && <p className="mt-2 text-sm text-red-500" key={state.message}>{state.message}</p>}
+          </div>
       </div>
       <div className="mt-6 flex justify-end gap-4">
         <Link
