@@ -11,8 +11,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
    const [invoice, customers] = await Promise.all([fetchInvoiceById(id), fetchCustomers()]);
 
-   //if invoice not found, trigger not-found.tsx
    if (!invoice) {
+      //if invoice not found, trigger not-found.tsx
       notFound();
    }
 
