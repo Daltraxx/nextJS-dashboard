@@ -37,7 +37,7 @@ export type State = {
 const CreateInvoice = FormSchema.omit({ id: true, date: true }); // id created in database and date created in createInvoice
 
 export async function createInvoice(prevState: State, formData: FormData) {
-   // prevState - contains the state passed from the useActionState hook. It's not being used here, but is a required prop
+   // prevState - contains the state passed from the useActionState hook in create-form.tsx. It's not being used here, but is a required prop
 
    const rawFormData = {
       // Tip: If you're working with forms that have many fields, you may want to consider using the entries() method with JavaScript's Object.fromEntries()
