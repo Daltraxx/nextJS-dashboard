@@ -1,5 +1,10 @@
 //By wrapping [id] in square brackets within the /invoices folder, we have created a dynamic route segment (/dashboard/invoices/[id]/edit)
 
+import { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: 'Edit Invoice'
+}
+
 import Form from '@/app/ui/invoices/edit-form';
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
 import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
