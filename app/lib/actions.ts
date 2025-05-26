@@ -134,3 +134,22 @@ export async function deleteInvoice(id: string) {
    // Calling revalidatePath will trigger a new server request and re-render the table.
 }
 
+import { signIn } from '@/auth';
+import { AuthError } from 'next-auth';
+
+// connect auth logic with login form
+export async function authenticate(prevState: string | undefined, formData: FormData) {
+   try {
+      await signIn('credentials', formData);
+   } catch (error) {
+      if (error instanceof AuthError) {
+         switch (error.type) {
+            case 'CredentialsSignin':
+               return 'Invalid credentials';
+            default:
+               return 'Something went wrong.';
+         }
+      }
+      throw error;
+   }
+}
