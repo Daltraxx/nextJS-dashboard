@@ -5,6 +5,12 @@
 // However, you can also use route groups to separate your application into sections 
 // (e.g. (marketing) routes and (shop) routes) or by teams for larger applications.
 
+import { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: 'Dashboard'
+}
+
+
 import CardWrapper from '@/app/ui/dashboard/cards';
 import RevenueChart from '@/app/ui/dashboard/revenue-chart';
 import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
