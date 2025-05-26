@@ -39,6 +39,7 @@ export const { auth, signIn, signOut } = NextAuth({
             }
 
             console.log('Invalid credentials');
+            // return null to prevent user from logging in
             return null;
          }
       })
