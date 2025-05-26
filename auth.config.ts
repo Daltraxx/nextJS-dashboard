@@ -16,13 +16,13 @@ export const authConfig = {
          } else if (isLoggedIn) {
             return Response.redirect(new URL('/dashboard', nextUrl));
          }
-            return true;
+         return true;
       },
    },
    // Add different login options
    providers: []
 } satisfies NextAuthConfig;
 
-// NOTE: You can use the pages option to specify the route for custom sign-in, sign-out, and error pages. 
-// This is not required, but by adding signIn: '/login' into our pages option, 
-// the user will be redirected to our custom login page, rather than the NextAuth.js default page.
+// NOTE: The authorized callback is used to verify if the request is authorized to access a page with Next.js Middleware. 
+// It is called before a request is completed, and it receives an object with the auth and request properties. 
+// The auth property contains the user's session, and the request property contains the incoming request.
