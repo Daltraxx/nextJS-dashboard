@@ -1,3 +1,10 @@
+// Metadata in nested pages will override the metadata in the parent
+import { Metadata } from 'next';
+export const metadata: Metadata = {
+    title: 'Invoices' // will be used in template defined in metadata object in root layout
+};
+
+
 import Pagination from '@/app/ui/invoices/pagination';
 import Search from '@/app/ui/search';
 import Table from '@/app/ui/invoices/table';

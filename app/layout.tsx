@@ -7,7 +7,10 @@ import { Metadata } from 'next';
 
 // Add metadata (applied in html head)
 export const metadata: Metadata = {
-  title: 'Acme Dashboard',
+  title: {
+    template: '%s | Acme Dashboard', // %s in the template will be replaced with the specific page title
+    default: 'Acme Dashboard'
+  },
   description: 'The official Next.js Course Dashboard, built with App Router.',
   metadataBase: new URL('https://next-learn-dashboard.vercel.sh')
 }
