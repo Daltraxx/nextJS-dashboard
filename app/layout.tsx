@@ -3,6 +3,14 @@
 
 import '@/app/ui/global.css';
 import { inter } from '@/app/ui/fonts'; // inter is imported from fonts.ts and used as the main body font. antialiased is a tailwind class to smooth out the font (not strictly necessary)
+import { Metadata } from 'next';
+
+// Add metadata (applied in html head)
+export const metadata: Metadata = {
+  title: 'Acme Dashboard',
+  description: 'The official Next.js Course Dashboard, built with App Router.',
+  metadataBase: new URL('https://next-learn-dashboard.vercel.sh')
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode;}) {
   return (
